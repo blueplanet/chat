@@ -3,9 +3,9 @@
   <%= @chatroom.name %>
 </p>
 
-<% @chatroom.messages.each do |message| %>
-  <p><strong><%= message.user.username %></strong>&nbsp;:&nbsp;<%= message.body %></p>
-<% end %>
+<div data-behavior='messages' data-chatroom-id="<%= @chatroom.id %>">
+  <%= render @chatroom.messages %>
+</div>
 
 <%= form_for [@chatroom, Message.new], remote: true do |f| %>
   <%= f.text_area :body, row: 1, class: 'form-control' %>

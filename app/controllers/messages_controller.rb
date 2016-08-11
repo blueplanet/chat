@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
   def create
     message = @chatroom.messages.build message_params.merge(user: current_user)
     message.save
+
+    MessageRelayJob.perform_later message
   end
 
   private
