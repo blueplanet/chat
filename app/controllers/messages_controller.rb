@@ -2,8 +2,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, :set_chatroom
 
   def create
-    @chatroom.messages.create! message_params.merge(user: current_user)
-    redirect_to @chatroom
+    message = @chatroom.messages.build message_params.merge(user: current_user)
+    message.save
   end
 
   private

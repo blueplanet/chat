@@ -7,6 +7,6 @@
   <p><strong><%= message.user.username %></strong>&nbsp;:&nbsp;<%= message.body %></p>
 <% end %>
 
-<%= form_for [@chatroom, Message.new] do |f| %>
+<%= form_for [@chatroom, Message.new], remote: true do |f| %>
   <%= f.text_area :body, row: 1, class: 'form-control' %>
 <% end %>
